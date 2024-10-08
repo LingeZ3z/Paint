@@ -1,8 +1,10 @@
 import requests
 
+url = "https://pbd.uwuwu.us.kg/paintboard"
+
 def getboard():
     board = [["" for j in range(1000)] for i in range(600)]
-    res = requests.get("https://pbd.uwuwu.us.kg/paintboard/board").text
+    res = requests.get(url + "/board").text
     for i in range(1, 1800000, 3):
         x = (i // 3) % 600
         y = (i // 3) // 600
@@ -14,7 +16,7 @@ def getboard():
 
 def paint(mx, my, mcolor, muid, mtoken):
     data = {'x': mx, 'y': my, 'color': mcolor, 'uid': muid,  'token': mtoken}
-    x = requests.post("https://pbd.uwuwu.us.kg/paintboard/paint", data=data)
+    x = requests.post(url + "/paint", data = data)
 
 if __name__ == "__main__":
     getboard()
